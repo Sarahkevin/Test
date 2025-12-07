@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电影台词拼接工具</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>电影台词拼接工具</h1>
+        
+        <div class="main-layout">
+            <div class="controls">
+                <div class="control-group">
+                    <label>原图预览</label>
+                    <canvas id="sourceCanvas"></canvas>
+                </div>
+
+                <div class="control-group">
+                    <label for="imageInput" class="upload-btn">
+                        选择图片
+                        <input type="file" id="imageInput" accept="image/*" hidden>
+                    </label>
+                    <span id="fileName">未选择文件</span>
+                </div>
+
+                <div class="control-group">
+                    <label>台词内容 (每行一句)</label>
+                    <textarea id="subtitleInput" placeholder="第一行台词&#10;第二行台词&#10;第三行台词..."></textarea>
+                </div>
+
+                <div class="settings">
+                    <div class="setting-item">
+                        <label for="sliceHeight">字幕区域高度 (%) <span id="sliceHeightVal">20</span>%</label>
+                        <input type="range" id="sliceHeight" min="10" max="50" value="20">
+                    </div>
+                    <div class="setting-item">
+                        <label for="fontSize">字体大小 (px) <span id="fontSizeVal">32</span></label>
+                        <input type="range" id="fontSize" min="12" max="100" value="32">
+                    </div>
+                    <div class="setting-item">
+                        <label for="lineHeight">文字底部边距 (px) <span id="lineHeightVal">20</span></label>
+                        <input type="range" id="lineHeight" min="0" max="100" value="20">
+                    </div>
+                    <div class="setting-item">
+                        <label for="fontColor">字体颜色</label>
+                        <div class="color-input-wrapper">
+                            <input type="color" id="fontColor" value="#ffffff">
+                            <span id="fontColorVal">#ffffff</span>
+                        </div>
+                    </div>
+                    <div class="setting-item">
+                        <label for="strokeColor">文字轮廓颜色</label>
+                        <div class="color-input-wrapper">
+                            <input type="color" id="strokeColor" value="#000000">
+                            <span id="strokeColorVal">#000000</span>
+                        </div>
+                    </div>
+                    <div class="setting-item">
+                        <label for="strokeWidth">轮廓粗细 (px) <span id="strokeWidthVal">4</span></label>
+                        <input type="range" id="strokeWidth" min="0" max="20" value="4" step="0.5">
+                    </div>
+                </div>
+
+                <button id="generateBtn">生成拼接图</button>
+            </div>
+
+            <div class="preview-area">
+                <canvas id="resultCanvas"></canvas>
+                <div id="downloadSection" style="display: none;">
+                    <button id="downloadBtn" class="secondary-btn">下载拼接图</button>
+                    <button id="mergeBtn" class="secondary-btn" style="background-color: #8e44ad;">合并对比并下载</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
